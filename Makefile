@@ -6,7 +6,7 @@
 #    By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/26 14:47:54 by mcerchi           #+#    #+#              #
-#    Updated: 2023/02/26 01:15:13 by lorenzogaud      ###   ########.fr        #
+#    Updated: 2023/02/27 00:20:47 by lorenzogaud      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ NAME		=	push_swap
 NAME_BONUS	=	checker
 
 SRC			=	push_swap.c ft_print_utils.c ft_arg_parse.c ft_stack_utils.c \
-				ft_action_swap.c ft_action_rotate.c ft_action_push.c ft_lis.c
+				ft_action_swap.c ft_action_rotate.c ft_action_push.c ft_lis.c \
+				ft_math_utils.c ft_move_to_b.c
 
 LIBFT		=	libft/libft.a
 

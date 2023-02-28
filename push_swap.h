@@ -6,7 +6,7 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:15:36 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/02/26 01:44:21 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/02/27 22:22:24 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,13 @@ void	ft_print_arr(int *arr, int len);
 int		ft_stack_elm_pos(t_list *stack, int content);
 int		*ft_copy_stack(t_list *stack, int len);
 
+int		ft_abs(int n);
+
 int		ft_parse_args(int argc, char **argv, t_list **stack_a);
 int		ft_stack_elm_pos(t_list *stack, int content);
 
+int		*ft_lis_arr(int *v, int len);
+int		ft_lis_max(int *lis_arr, int len);
 void	ft_move_nolis_to_b(t_list **stack_a, t_list **stack_b, int stack_a_len);
 
 void	ft_sa(t_list **stack_a);
@@ -36,6 +40,4 @@ void	ft_rra(t_list **stack_a);
 void	ft_rrb(t_list **stack_b);
 void	ft_pa(t_list **stack_a, t_list **stack_b);
 void	ft_pb(t_list **stack_a, t_list **stack_b);
-void	ft_push_to_b(
-			t_list **stack_a, t_list **stack_b, int stack_a_len, int content);
 #endif

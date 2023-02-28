@@ -1,45 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stack_utils.c                                   :+:      :+:    :+:   */
+/*   ft_math_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/24 12:47:07 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/02/27 00:07:32 by lorenzogaud      ###   ########.fr       */
+/*   Created: 2023/02/26 23:55:07 by lorenzogaud       #+#    #+#             */
+/*   Updated: 2023/02/26 23:56:19 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_stack_elm_pos(t_list *stack, int content)
+int	ft_abs(int n)
 {
-	int	pos;
-
-	pos = 0;
-	while (stack->content != content)
-	{
-		if (!(stack->next))
-			return (-1);
-		stack = stack->next;
-		pos++;
-	}
-	return (pos);
-}
-
-int	*ft_copy_stack(t_list *stack, int len)
-{
-	int	i;
-	int	*cpy;
-
-	cpy = (int *)malloc(sizeof(int) * len);
-	if (!cpy)
-		ft_print_error();
-	i = 0;
-	while (stack)
-	{
-		cpy[i++] = stack->content;
-		stack = stack->next;
-	}
-	return (cpy);
+	if (n >= 0)
+		return (n);
+	return (-n);
 }
