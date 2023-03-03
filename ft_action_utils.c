@@ -1,0 +1,103 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_action_utils.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/28 14:04:52 by lorenzogaud       #+#    #+#             */
+/*   Updated: 2023/03/02 23:35:35 by lorenzogaud      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+#include <stdio.h>
+
+void	ft_ra_n(t_list **stack_a, int ra_n)
+{
+	int	stack_a_len;
+
+	if (!ra_n)
+		return ;
+	stack_a_len = ft_lstsize(*stack_a);
+	if ((ra_n > 0) && (ra_n > stack_a_len / 2))
+		ra_n -= stack_a_len;
+	else if ((ra_n < 0) && (ft_abs(ra_n) > stack_a_len / 2))
+		ra_n += stack_a_len;
+	if (ra_n > 0)
+	{
+		while (ra_n-- > 0)
+			ft_ra(stack_a);
+	}
+	else
+		while (ra_n++)
+			ft_rra(stack_a);
+}
+
+void	ft_ra_n_pb(t_list **stack_a, t_list **stack_b, int ra_n)
+{
+	ft_ra_n(stack_a, ra_n);
+	ft_pb(stack_a, stack_b);
+}
+
+void	ft_rb_n(t_list **stack_b, int rb_n)
+{
+	int	stack_b_len;
+
+	if (!rb_n)
+		return ;
+	stack_b_len = ft_lstsize(*stack_b);
+	if ((rb_n > 0) && (rb_n > stack_b_len / 2))
+		rb_n -= stack_b_len;
+	else if ((rb_n < 0) && (ft_abs(rb_n) > stack_b_len / 2))
+		rb_n += stack_b_len;
+	if (rb_n > 0)
+	{
+		while (rb_n-- > 0)
+			ft_rb(stack_b);
+	}
+	else
+		while (rb_n++)
+			ft_rrb(stack_b);
+}
+
+void	ft_rb_n_pa(t_list **stack_a, t_list **stack_b, int rb_n)
+{
+	ft_rb_n(stack_b, rb_n);
+	ft_pa(stack_a, stack_b);
+}
+
+void	ft_r_best_combo(t_list **stack_a, t_list **stack_b, int ra_n, int rb_n)
+{
+	// int	min_action_len;
+	// int	rra_n;
+	// int	rrb_n;
+	// int	rr_n;
+	// int	rrr_n;
+
+	// rra_n = 0;
+	// rrb_n = 0;
+	// min_action_len = ra_n + rb_n;
+	// if (ra_n > 0 && rb_n > 0)
+	// {
+	// 	rr_n = ft_min(ra_n, rb_n);
+	// 	ra_n -= rr_n;
+	// 	rb_n -= rr_n;
+	// }
+	while (ra_n > 0 && rb_n > 0)
+	{
+		ft_ra(stack_a);
+		ft_rb(stack_b);
+		ra_n--;
+		rb_n--;
+	}
+	while (ra_n < 0 && rb_n < 0)
+	{
+		ft_rra(stack_a);
+		ft_rrb(stack_b);
+		ra_n++;
+		rb_n++;
+	}
+	ft_ra_n(stack_a, ra_n);
+	ft_rb_n(stack_b, rb_n);
+}
