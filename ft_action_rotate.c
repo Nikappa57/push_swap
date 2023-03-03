@@ -6,7 +6,7 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 23:36:30 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/02/24 11:48:28 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/02/28 19:33:43 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,5 @@ void	ft_rrb(t_list **stack_b)
 	while (back->next != front && back->next != NULL)
 		back = back->next;
 	back->next = NULL;
-	ft_print_action("rra");
+	ft_print_action("rrb");
 }

@@ -6,7 +6,7 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:51:24 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/02/26 23:02:31 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/02 21:09:19 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ void	ft_print_stack(t_list *stack_a, t_list *stack_b)
 
 int	ft_print_error(void)
 {
-	ft_putstr_fd("Error\n", 1);
+	ft_putstr_fd("Error\n", 2);
+	exit(0);
 	return (0);
 }
 
