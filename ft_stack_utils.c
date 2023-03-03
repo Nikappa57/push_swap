@@ -6,11 +6,43 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:47:07 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/02/27 00:07:32 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/02 19:46:40 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	ft_stack_find_min_pos(t_list *stack)
+{
+	int	i;
+	int	min;
+	int	min_pos;
+
+	if (!stack)
+		return (ft_print_error());
+	min_pos = 0;
+	i = 0;
+	min = stack->content;
+	while (stack)
+	{
+		if (stack->content < min)
+		{
+			min = stack->content;
+			min_pos = i;
+		}
+		i++;
+		stack = stack->next;
+	}
+	return (min_pos);
+}
+
+void	ft_stack_sort(t_list **stack)
+{
+	int	ra_n;
+
+	ra_n = ft_stack_find_min_pos(*stack);
+	ft_ra_n(stack, ra_n);
+}
 
 int	ft_stack_elm_pos(t_list *stack, int content)
 {
@@ -25,6 +57,20 @@ int	ft_stack_elm_pos(t_list *stack, int content)
 		pos++;
 	}
 	return (pos);
+}
+
+int	ft_stack_elm_val(t_list *stack, int pos)
+{
+	int	i;
+
+	i = 0;
+	while (i++ < pos)
+	{
+		if (!(stack->next))
+			return (ft_print_error());
+		stack = stack->next;
+	}
+	return (stack->content);
 }
 
 int	*ft_copy_stack(t_list *stack, int len)
@@ -42,4 +88,32 @@ int	*ft_copy_stack(t_list *stack, int len)
 		stack = stack->next;
 	}
 	return (cpy);
+}
+
+int	ft_stack_elm_ismax(t_list *stack, int elm_val)
+{
+	int	result;
+
+	result = 1;
+	while (stack != NULL)
+	{
+		if (stack->content > elm_val)
+			result = 0;
+		stack = stack->next;
+	}
+	return (result);
+}
+
+int	ft_stack_elm_ismin(t_list *stack, int elm_val)
+{
+	int	result;
+
+	result = 1;
+	while (stack != NULL)
+	{
+		if (stack->content < elm_val)
+			result = 0;
+		stack = stack->next;
+	}
+	return (result);
 }
