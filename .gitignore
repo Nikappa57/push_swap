@@ -56,3 +56,8 @@ dkms.conf
 libft/
 push_swap
 utils/gen_list.py
+imgui.ini
+push_swap_tester/
+push_swap_visualizer/
+*.py
+visualizer
