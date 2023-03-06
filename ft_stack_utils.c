@@ -6,7 +6,7 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:47:07 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/02 19:46:40 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/06 20:08:39 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,6 @@ int	ft_stack_find_min_pos(t_list *stack)
 		stack = stack->next;
 	}
 	return (min_pos);
-}
-
-void	ft_stack_sort(t_list **stack)
-{
-	int	ra_n;
-
-	ra_n = ft_stack_find_min_pos(*stack);
-	ft_ra_n(stack, ra_n);
 }
 
 int	ft_stack_elm_pos(t_list *stack, int content)

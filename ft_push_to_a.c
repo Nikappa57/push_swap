@@ -6,7 +6,7 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 13:11:22 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/06 15:10:45 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/06 20:08:45 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,14 @@ static int	ft_min_elm_pos(t_list *stack_a, t_list *stack_b,
 		b_elm_pos++;
 	}
 	return (min_elm_pos);
+}
+
+static void	ft_stack_sort(t_list **stack)
+{
+	int	ra_n;
+
+	ra_n = ft_stack_find_min_pos(*stack);
+	ft_ra_n(stack, ra_n);
 }
 
 void	ft_push_to_a(
