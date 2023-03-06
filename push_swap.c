@@ -6,7 +6,7 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:15:00 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/02 20:23:33 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/07 00:31:01 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
 	if (!ft_parse_args(argc, argv, &stack_a))
 		return (0);
+	if (argc - 1 <= 5)
+	{
+		ft_short_sort(&stack_a, &stack_b, argc - 1);
+		ft_print_action(NULL);
+		return (0);
+	}
 	// ft_print_stack(stack_a, stack_b);
 	ft_move_nolis_to_b(&stack_a, &stack_b, argc - 1);
 	// printf("\nLIS MOVE:\n");
@@ -38,5 +44,3 @@ int	main(int argc, char **argv)
 	ft_lstclear(&stack_b);
 	return (0);
 }
-
-// TODO SIMPLIFY ARRAY (?)
