@@ -6,7 +6,7 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:15:36 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/03 00:06:14 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/06 20:08:22 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ void			ft_print_stack(t_list *stack_a, t_list *stack_b);
 void			ft_print_action(char *last_action);
 void			ft_print_arr(int *arr, int len);
 
+void			ft_short_sort(
+					t_list **stack_a, t_list **stack_b, int stack_a_len);
+
 // TEST
 int				ft_check_ord_after_ra(t_list *stack_a, int ra_n);
 int				ft_stack_elm_pos(t_list *stack, int content);
@@ -27,7 +30,6 @@ int				*ft_copy_stack(t_list *stack, int len);
 int				ft_stack_elm_val(t_list *stack, int pos);
 int				ft_stack_elm_ismax(t_list *stack, int elm_val);
 int				ft_stack_elm_ismin(t_list *stack, int elm_val);
-void			ft_stack_sort(t_list **stack);
 int				ft_stack_find_min_pos(t_list *stack);
 
 int				ft_abs(int n);
@@ -56,5 +58,6 @@ void			ft_pb(t_list **stack_a, t_list **stack_b);
 void			ft_ra_n(t_list **stack_a, int ra_n);
 void			ft_ra_n_pb(t_list **stack_a, t_list **stack_b, int ra_n);
 void			ft_rb_n_pa(t_list **stack_a, t_list **stack_b, int rb_n);
-void			ft_r_best_combo(t_list **stack_a, t_list **stack_b, int ra_n, int rb_n);
+void			ft_r_best_combo(t_list **stack_a, t_list **stack_b,
+					int ra_n, int rb_n);
 #endif
