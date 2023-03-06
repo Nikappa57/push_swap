@@ -6,7 +6,7 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 14:04:52 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/02 23:35:35 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/06 14:54:33 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,23 +67,33 @@ void	ft_rb_n_pa(t_list **stack_a, t_list **stack_b, int rb_n)
 	ft_pa(stack_a, stack_b);
 }
 
+static void	ft_r_find_combo(
+	t_list *stack_a, t_list *stack_b, int *ra_n, int *rb_n)
+{
+	int	stack_a_len;
+	int	stack_b_len;
+
+	stack_b_len = ft_lstsize(stack_b);
+	stack_a_len = ft_lstsize(stack_a);
+	if (*ra_n < 0 && *rb_n > 0)
+	{	
+		if (ft_abs(ft_min(*rb_n - stack_b_len, *ra_n)) < ft_abs(*ra_n) + *rb_n)
+			*rb_n -= stack_b_len;
+		else if (ft_max(*ra_n + stack_a_len, *rb_n) < ft_abs(*ra_n) + *rb_n)
+			*ra_n += stack_a_len;
+	}
+	else if (*ra_n > 0 && *rb_n < 0)
+	{
+		if (ft_abs(ft_min(*ra_n - stack_a_len, *rb_n)) < ft_abs(*rb_n) + *ra_n)
+			*ra_n -= stack_a_len;
+		else if (ft_max(*rb_n + stack_b_len, *ra_n) < ft_abs(*ra_n) + *rb_n)
+			*rb_n += stack_b_len;
+	}
+}
+
 void	ft_r_best_combo(t_list **stack_a, t_list **stack_b, int ra_n, int rb_n)
 {
-	// int	min_action_len;
-	// int	rra_n;
-	// int	rrb_n;
-	// int	rr_n;
-	// int	rrr_n;
-
-	// rra_n = 0;
-	// rrb_n = 0;
-	// min_action_len = ra_n + rb_n;
-	// if (ra_n > 0 && rb_n > 0)
-	// {
-	// 	rr_n = ft_min(ra_n, rb_n);
-	// 	ra_n -= rr_n;
-	// 	rb_n -= rr_n;
-	// }
+	ft_r_find_combo(*stack_a, *stack_b, &ra_n, &rb_n);
 	while (ra_n > 0 && rb_n > 0)
 	{
 		ft_ra(stack_a);

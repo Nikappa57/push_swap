@@ -6,7 +6,7 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 00:19:56 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/02/27 23:35:34 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/06 14:39:22 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,23 @@ static void	ft_remove_nolis_elm(int **arr, int len, int pos)
 		(*arr)[i] = (*arr)[i + 1];
 		i++;
 	}
+}
+
+// TEST
+int	*ft_lis_val_arr(int *v, int v_len, int *lis_arr, int lis_max)
+{
+	int	*lis_val_arr;
+
+	lis_val_arr = (int *) malloc(sizeof(int) * lis_max);
+	if (!lis_val_arr)
+		ft_print_error();
+	while (lis_max > 0)
+	{
+		if (lis_arr[v_len] == lis_max)
+			lis_val_arr[--lis_max] = v[v_len];
+		v_len--;
+	}
+	return (lis_val_arr);
 }
 
 static int	*ft_nolis_val_arr(int *v, int v_len, int *nolis_len)
@@ -68,13 +85,11 @@ static int	ft_find_best_push_b(
 	while (i < nolis_len)
 	{
 		elm_pos = ft_stack_elm_pos(stack_a, (*nolis_arr)[i++]);
-		if (elm_pos == -1)
-			continue ;
 		if (elm_pos <= (int)(stack_a_len / 2))
 			move = elm_pos;
 		else
 			move = elm_pos - stack_a_len;
-		if (ft_abs(min_move) > ft_abs(move))
+		if (ft_abs(min_move) > ft_abs(move) && elm_pos != -1)
 		{
 			min_move = move;
 			min_elm_pos = i - 1;
@@ -82,29 +97,6 @@ static int	ft_find_best_push_b(
 	}
 	ft_remove_nolis_elm(nolis_arr, nolis_len, min_elm_pos);
 	return (min_move);
-}
-
-static void	ft_ra_n_pb(t_list **stack_a, t_list **stack_b, int ra_n)
-{
-	if (ra_n > 0)
-	{
-		while (ra_n-- > 0)
-			ft_ra(stack_a);
-	}
-	else
-		while (ra_n++)
-			ft_rra(stack_a);
-	ft_pb(stack_a, stack_b);
-}
-
-static void	ft_rra_n(t_list **stack_a, int ra_len)
-{
-	if (ra_len >= 0)
-		while (ra_len--)
-			ft_rra(stack_a);
-	else
-		while (ra_len++)
-			ft_ra(stack_a);
 }
 
 void	ft_move_nolis_to_b(t_list **stack_a, t_list **stack_b, int stack_a_len)
@@ -132,7 +124,6 @@ void	ft_move_nolis_to_b(t_list **stack_a, t_list **stack_b, int stack_a_len)
 		ra_n = ft_find_best_push_b(
 				*stack_a, stack_a_len, &nolis_arr, nolis_len--);
 	}
-	ft_rra_n(stack_a, ra_len);
 	free(v);
 	free(nolis_arr);
 }
