@@ -6,19 +6,22 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 19:33:03 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/02/23 20:20:13 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/07 19:49:39 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
 static int	ft_issdigit(char *s)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	if ((s[i] == '+' || s[i] == '-') && s[i + 1])
 		i++;
+	if (ft_strlen(s) > 12)
+		return (0);
 	while (s[i])
 		if (!ft_isdigit(s[i++]))
 			return (0);
@@ -28,12 +31,22 @@ static int	ft_issdigit(char *s)
 static int	ft_parse_args_list(int argc, char **argv, t_list **stack_a, int i)
 {
 	t_list	*tmp;
+	int		content;
 
 	while (i < argc)
 	{
 		if (!ft_issdigit(argv[i]))
+		{
+			ft_lstclear(stack_a);
 			return (ft_print_error());
-		tmp = ft_lstnew(ft_atoi(argv[i++]));
+		}
+		content = ft_atoi(argv[i++]);
+		if ((*stack_a != NULL) && (ft_stack_elm_pos(*stack_a, content) != -1))
+		{
+			ft_lstclear(stack_a);
+			return (ft_print_error());
+		}
+		tmp = ft_lstnew(content);
 		ft_lstadd_back(stack_a, tmp);
 	}
 	tmp = NULL;
