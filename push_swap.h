@@ -6,7 +6,7 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:15:36 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/06 20:08:22 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/09 18:38:41 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void			ft_print_arr(int *arr, int len);
 
 void			ft_short_sort(
 					t_list **stack_a, t_list **stack_b, int stack_a_len);
+
+void			ft_simplify_stack(t_list *stack_a, int stack_a_len);
 
 // TEST
 int				ft_check_ord_after_ra(t_list *stack_a, int ra_n);
