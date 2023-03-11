@@ -6,14 +6,14 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 13:11:22 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/06 20:08:45 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/10 21:50:16 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
-static int	ft_move_elm_front_len(int stack_len, int elm_pos)
+int	ft_move_elm_front_len(int stack_len, int elm_pos)
 {
 	if (elm_pos < 0)
 		return (ft_print_error());
@@ -80,12 +80,8 @@ static void	ft_push_elm_to_a(
 	ft_pa(stack_a, stack_b);
 }
 
-static int	ft_push_elm_to_a_len(
-	t_list *stack_a, t_list *stack_b, int ra_n, int rb_n)
+static int	ft_push_elm_to_a_len(int ra_n, int rb_n)
 {
-	int	a_elm_pos;
-	int	stack_b_len;
-
 	if (ra_n > 0 && rb_n > 0)
 		return (ft_max(ra_n, rb_n));
 	else if (ra_n < 0 && rb_n < 0)
@@ -126,8 +122,7 @@ static int	ft_min_elm_pos(t_list *stack_a, t_list *stack_b,
 	while (b_elm_pos < stack_b_len)
 	{
 		ra_n = ft_min_elm_pos_ra(stack_a, stack_b, stack_a_len, b_elm_pos);
-		tmp_move = ft_push_elm_to_a_len(stack_a, stack_b,
-				ra_n, ft_move_elm_front_len(stack_b_len, b_elm_pos));
+		tmp_move = ft_push_elm_to_a_len(ra_n, ft_move_elm_front_len(stack_b_len, b_elm_pos));
 		if (tmp_move < min_move && tmp_move != -1)
 		{
 			min_move = tmp_move;

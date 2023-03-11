@@ -6,7 +6,7 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 00:19:56 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/10 00:55:24 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/10 12:05:32 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,31 +134,6 @@ int	*ft_lis_val_arr(int *v, int v_len, int *lis_arr, int lis_max)
 		v_len--;
 	}
 	return (lis_val_arr);
-}
-
-static int	*ft_nolis_val_arr(int *v, int v_len, int *nolis_len)
-{
-	int	i;
-	int	lis_len;
-	int	*lis_arr;
-	int	*lis_noval_arr;
-
-	lis_arr = ft_lis_arr(v, v_len);
-	lis_len = ft_lis_max(lis_arr, v_len);
-	*nolis_len = v_len - lis_len;
-	lis_noval_arr = (int *) malloc(sizeof(int) * *nolis_len);
-	if (!lis_noval_arr)
-		ft_print_error();
-	i = *nolis_len;
-	while (i >= 0)
-	{
-		if (lis_arr[--v_len] == lis_len)
-			lis_len--;
-		else
-			lis_noval_arr[--i] = v[v_len];
-	}
-	free(lis_arr);
-	return (lis_noval_arr);
 }
 
 // static int	ft_find_min_move_elm_chunk(t_list *stack_a, int chunk)
