@@ -6,7 +6,7 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 13:11:22 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/11 22:19:59 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/12 23:39:05 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ static int	ft_chunk_len(int len)
 
 static int	ft_is_in_chunk(int all_nbr_len, int chunk, int val)
 {
-	int			min;
-	int			max;
-	int			chunk_len;
-	int			nbr_per_chunk;
+	int	min;
+	int	max;
+	int	chunk_len;
+	int	nbr_per_chunk;
 
 	if (all_nbr_len % 2)
 		all_nbr_len++;
@@ -55,7 +55,6 @@ int	ft_get_chunk(int val, int all_nbr_len)
 	return (chunk);
 }
 
-
 // TODO: quando fa rrb probabilmente non gli serve portare l'elm sopra, basta che si sotto
 static int	ft_move_elm_front_len(int stack_len, int elm_pos)
 {
@@ -68,10 +67,10 @@ static int	ft_move_elm_front_len(int stack_len, int elm_pos)
 }
 
 static int	ft_find_b_elm(
-	t_list *stack_a, t_list *stack_b, int min_elm_pos, int all_nbr_len)
+	t_list *stack_a, t_list *stack_b, int a_eml_pos, int all_nbr_len)
 {
 	int	i;
-	int	tmp_rb;
+	int	a_val;
 	int	min_rb;
 	int	min_b_pos;
 	int	stack_b_len;
@@ -80,13 +79,14 @@ static int	ft_find_b_elm(
 	i = 0;
 	min_b_pos = 0;
 	min_rb = all_nbr_len;
+	a_val = ft_stack_elm_val(stack_a, a_eml_pos);
 	while (i < stack_b_len)
 	{
-		if (ft_is_in_chunk(all_nbr_len, ft_get_chunk(ft_stack_elm_val(
-						stack_a, min_elm_pos), all_nbr_len), stack_b->content)
-			&& ft_abs(min_rb) > ft_abs(ft_move_elm_front_len(stack_b_len, i)))
+		if (ft_is_in_chunk(all_nbr_len,
+				ft_get_chunk(a_val, all_nbr_len), stack_b->content)
+			&& min_rb > ft_abs(ft_move_elm_front_len(stack_b_len, i)))
 		{
-			min_rb = ft_move_elm_front_len(stack_b_len, i);
+			min_rb = ft_abs(ft_move_elm_front_len(stack_b_len, i));
 			min_b_pos = i;
 		}
 		stack_b = stack_b->next;
@@ -96,19 +96,16 @@ static int	ft_find_b_elm(
 }
 
 static void	ft_push_elm_to_b(
-	t_list **stack_a, t_list **stack_b, int min_elm_pos, int all_nbr_len)
+	t_list **stack_a, t_list **stack_b, int min_elm_pos, int stack_a_len)
 {
 	int	rb_n;
 	int	ra_n;
 	int	b_elm_pos;
-	int	stack_a_len;
 	int	stack_b_len;
 
-	stack_a_len = ft_lstsize(*stack_a);
 	stack_b_len = ft_lstsize(*stack_b);
-	b_elm_pos = ft_find_b_elm(*stack_a, *stack_b, min_elm_pos, all_nbr_len);
-	if (b_elm_pos == -1)
-		return ;
+	b_elm_pos = ft_find_b_elm(*stack_a, *stack_b, min_elm_pos,
+			stack_a_len + stack_b_len);
 	rb_n = ft_move_elm_front_len(stack_b_len, b_elm_pos);
 	ra_n = ft_move_elm_front_len(stack_a_len, min_elm_pos);
 	ft_r_best_combo(stack_a, stack_b, ra_n, rb_n);
@@ -162,26 +159,23 @@ void ft_stack_rmv_elm(t_list **stack, int elm_val)
 }
 
 static int	ft_min_elm(t_list *stack_a, t_list *stack_b,
-	t_list *nolis_list, int all_nbr_len)
+	t_list *nolis_list, int stack_a_len)
 {
-	int			rb_n;
 	int			a_elm_pos;
 	int			tmp_move;
 	int			min_move;
 	int			min_elm;
 	int			stack_b_len;
-	int 		stack_a_len;
 
-	stack_a_len = ft_lstsize(stack_a);
 	stack_b_len = ft_lstsize(stack_b);
-	min_move = stack_a_len + stack_b_len; // ALL NBR = stack_a_len + stack_b_len
+	min_move = stack_a_len + stack_b_len;
 	while (nolis_list)
 	{
 		a_elm_pos = ft_stack_elm_pos(stack_a, nolis_list->content);
-		rb_n = ft_move_elm_front_len(stack_b_len, ft_find_b_elm(
-					stack_a, stack_b, a_elm_pos, all_nbr_len));
-		tmp_move = ft_push_elm_to_b_len(ft_move_elm_front_len(stack_a_len,
-					a_elm_pos), rb_n);
+		tmp_move = ft_push_elm_to_b_len(
+				ft_move_elm_front_len(stack_a_len, a_elm_pos),
+				ft_move_elm_front_len(stack_b_len, ft_find_b_elm(stack_a,
+						stack_b, a_elm_pos, stack_a_len + stack_b_len)));
 		if (tmp_move < min_move && tmp_move != -1)
 		{
 			min_move = tmp_move;
@@ -229,19 +223,13 @@ void	ft_push_to_b(
 	nolis_list = NULL;
 	ft_nolis(*stack_a, stack_a_len, &nolis_list);
 	nolis_len = ft_lstsize(nolis_list);
-	// printf("NOLIS LEN: %d\nNOLIS:\n", nolis_len);
-	// ft_print_stack(nolis_list, NULL);
 	while (nolis_len > 0)
 	{
-		// printf("-------------------\n");
-		// printf("NOLIS LEN: %d\nNOLIS:\n", nolis_len);
-		// ft_print_stack(nolis_list, NULL);
 		min_elm = ft_min_elm(
-				*stack_a, *stack_b, nolis_list, all_nbr_len);
+				*stack_a, *stack_b, nolis_list, stack_a_len);
 		ft_stack_rmv_elm(&nolis_list, min_elm);
-		// printf("ELEMENTO DA SPOSTARE: %d\n", min_elm);
 		ft_push_elm_to_b(stack_a, stack_b, ft_stack_elm_pos(
-				*stack_a, min_elm), all_nbr_len);
+				*stack_a, min_elm), stack_a_len);
 		stack_b_len++;
 		stack_a_len--;
 		nolis_len--;
@@ -250,3 +238,11 @@ void	ft_push_to_b(
 }
 
 // TODO: ottimizzare push dell'ultimo (anche ultimi 2??)
+
+// TODO:
+
+// vedere bene come divide i chunk
+// migliorare i nomi delle varie robe
+// migliorare conteggio mosse
+// 	per esempio quando sono 2 chunk perchè non li pusha insieme fance poi ra?
+// controllare i worst case (es ordinato ma invertito)
