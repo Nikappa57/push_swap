@@ -6,7 +6,7 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 13:11:22 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/13 23:39:19 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/14 00:13:41 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ static int	ft_is_in_chunk(int all_nbr_len, int chunk, int val)
 	int	chunk_len;
 	int	nbr_per_chunk;
 
-	if (all_nbr_len % 2)
-		all_nbr_len++;
 	chunk_len = ft_chunk_len(all_nbr_len);
 	nbr_per_chunk = all_nbr_len / chunk_len;
 	min = nbr_per_chunk * chunk;
 	max = min - 1 + nbr_per_chunk;
 	if (val <= max && val >= min)
+		return (1);
+	if (val >= max && chunk == chunk_len - 1)
 		return (1);
 	return (0);
 }
