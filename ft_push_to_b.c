@@ -6,7 +6,7 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 13:11:22 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/12 23:57:33 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/13 23:39:19 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	ft_chunk_len(int len)
 	if (len <= 100)
 		return (2);
 	if (len <= 500)
-		return (4);
+		return (5);
 	return (0);
 }
 
@@ -71,14 +71,19 @@ static int	ft_push_elm_to_b_len(int stack_a_len, int a_elm_pos,
 {
 	int	ra_n;
 	int	rb_n;
+	int	rb_after_pb;
 
 	ra_n = ft_move_elm_front_len(stack_a_len, a_elm_pos);
 	rb_n = ft_move_elm_front_len(stack_b_len, b_elm_pos);
+	rb_after_pb = 0;
+	if (rb_n < 0)
+		rb_after_pb = 1;
+	rb_n += rb_after_pb;
 	if (ra_n > 0 && rb_n > 0)
-		return (ft_max(ra_n, rb_n));
+		return (ft_max(ra_n, rb_n) + rb_after_pb);
 	else if (ra_n < 0 && rb_n < 0)
-		return (ft_abs(ft_min(ra_n, rb_n)));
-	return (ft_abs(ra_n) + ft_abs(rb_n));
+		return (ft_abs(ft_min(ra_n, rb_n)) + rb_after_pb);
+	return (ft_abs(ra_n) + ft_abs(rb_n) + rb_after_pb);
 }
 
 static int	ft_find_b_elm(
@@ -116,16 +121,23 @@ static void	ft_push_elm_to_b(
 	t_list **stack_a, t_list **stack_b, int min_elm_pos, int stack_a_len)
 {
 	int	rb_n;
+	int	rb_after_pb;
 	int	ra_n;
 	int	b_elm_pos;
 	int	stack_b_len;
 
+	rb_after_pb = 0;
 	stack_b_len = ft_lstsize(*stack_b);
 	b_elm_pos = ft_find_b_elm(*stack_a, *stack_b, min_elm_pos, stack_a_len);
 	rb_n = ft_move_elm_front_len(stack_b_len, b_elm_pos);
+	if (rb_n < 0)
+		rb_after_pb = 1;
+	rb_n += rb_after_pb;
 	ra_n = ft_move_elm_front_len(stack_a_len, min_elm_pos);
 	ft_r_best_combo(stack_a, stack_b, ra_n, rb_n);
 	ft_pb(stack_a, stack_b);
+	if (rb_after_pb)
+		ft_rb(stack_b);
 }
 
 void ft_stack_rmv_elm(t_list **stack, int elm_val)
