@@ -6,7 +6,7 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 13:11:22 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/14 00:13:41 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/15 12:39:44 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,12 @@ int	ft_get_chunk(int val, int all_nbr_len)
 	return (chunk);
 }
 
-// TODO: quando fa rrb probabilmente non gli serve portare l'elm sopra, basta che si sotto
+static int	ft_is_in_same_chunk(int all_nbr_len, int val_1, int val_2)
+{
+	return (ft_get_chunk(val_1, all_nbr_len)
+		== ft_get_chunk(val_2, all_nbr_len));
+}
+
 static int	ft_move_elm_front_len(int stack_len, int elm_pos)
 {
 	if (elm_pos < 0)
@@ -102,10 +107,9 @@ static int	ft_find_b_elm(
 	a_val = ft_stack_elm_val(stack_a, a_elm_pos);
 	while (i < stack_b_len)
 	{
-		if (ft_is_in_chunk(stack_a_len + stack_b_len, ft_get_chunk(
-					a_val, stack_a_len + stack_b_len), stack_b->content)
-			&& min_move > ft_push_elm_to_b_len(
-				stack_a_len, a_elm_pos, stack_b_len, i))
+		if (ft_is_in_same_chunk(stack_a_len + stack_b_len, a_val,
+				stack_b->content) && (min_move > ft_push_elm_to_b_len(
+					stack_a_len, a_elm_pos, stack_b_len, i)))
 		{
 			min_move = ft_push_elm_to_b_len(
 					stack_a_len, a_elm_pos, stack_b_len, i);
@@ -253,14 +257,3 @@ void	ft_push_to_b(
 	}
 	ft_lstclear(&nolis_list);
 }
-
-// TODO: ottimizzare push dell'ultimo (anche ultimi 2??)
-
-// TODO:
-
-// vedere bene come divide i chunk
-// migliorare i nomi delle varie robe
-// migliorare conteggio mosse 
-// if (rb_n < 0) rb_n++;
-// 	per esempio quando sono 2 chunk perchè non li pusha insieme fance poi ra?
-// controllare i worst case (es ordinato ma invertito)
