@@ -6,7 +6,7 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:51:24 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/02 21:09:19 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/16 14:16:08 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,8 @@ static int	ft_action_check_useless(char *action1, char *action2)
 		|| !ft_strncmp(action1, "rb", 2) && !ft_strncmp(action2, "rrb", 3)
 		|| (!ft_strncmp(action1, "rrb", 3) && !ft_strncmp(action2, "rb", 2)))
 		return (1);
-	if ((!ft_strncmp(action1, "rr", 2) && !ft_strncmp(action2, "rrr", 3))
-		|| (!ft_strncmp(action1, "rrr", 3) && !ft_strncmp(action2, "rr", 2)))
+	if ((!ft_strncmp(action1, "rr", 3) && !ft_strncmp(action2, "rrr", 3))
+		|| (!ft_strncmp(action1, "rrr", 3) && !ft_strncmp(action2, "rr", 3)))
 		return (1);
 	if ((!ft_strncmp(action1, "pa", 2) && !ft_strncmp(action2, "pb", 2))
 		|| (!ft_strncmp(action1, "pb", 2) && !ft_strncmp(action2, "pa", 2)))
