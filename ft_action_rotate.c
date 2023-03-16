@@ -6,7 +6,7 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 23:36:30 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/02/28 19:33:43 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/16 13:17:38 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,24 @@ void	ft_rb(t_list **stack_b)
 	ft_print_action("rb");
 }
 
+void	ft_rr(t_list **stack_a, t_list **stack_b)
+{
+	t_list	*front;
+	t_list	*back;
+
+	back = *stack_a;
+	front = back->next;
+	ft_lstlast(*stack_a)->next = back;
+	back->next = NULL;
+	*stack_a = front;
+	back = *stack_b;
+	front = back->next;
+	ft_lstlast(*stack_b)->next = back;
+	back->next = NULL;
+	*stack_b = front;
+	ft_print_action("rr");
+}
+
 void	ft_rra(t_list **stack_a)
 {
 	t_list	*front;
@@ -66,4 +84,26 @@ void	ft_rrb(t_list **stack_b)
 		back = back->next;
 	back->next = NULL;
 	ft_print_action("rrb");
+}
+
+void	ft_rrr(t_list **stack_a, t_list **stack_b)
+{
+	t_list	*front;
+	t_list	*back;
+
+	front = ft_lstlast(*stack_a);
+	front->next = *stack_a;
+	*stack_a = front;
+	back = *stack_a;
+	while (back->next != front && back->next != NULL)
+		back = back->next;
+	back->next = NULL;
+	front = ft_lstlast(*stack_b);
+	front->next = *stack_b;
+	*stack_b = front;
+	back = *stack_b;
+	while (back->next != front && back->next != NULL)
+		back = back->next;
+	back->next = NULL;
+	ft_print_action("rrr");
 }
