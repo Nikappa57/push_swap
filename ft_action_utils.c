@@ -6,7 +6,7 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 14:04:52 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/06 14:54:33 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/16 13:57:45 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,15 +96,13 @@ void	ft_r_best_combo(t_list **stack_a, t_list **stack_b, int ra_n, int rb_n)
 	ft_r_find_combo(*stack_a, *stack_b, &ra_n, &rb_n);
 	while (ra_n > 0 && rb_n > 0)
 	{
-		ft_ra(stack_a);
-		ft_rb(stack_b);
+		ft_rr(stack_a, stack_b);
 		ra_n--;
 		rb_n--;
 	}
 	while (ra_n < 0 && rb_n < 0)
 	{
-		ft_rra(stack_a);
-		ft_rrb(stack_b);
+		ft_rrr(stack_a, stack_b);
 		ra_n++;
 		rb_n++;
 	}
