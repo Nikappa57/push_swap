@@ -6,7 +6,7 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 13:11:22 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/15 12:39:44 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/16 19:14:57 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	ft_chunk_len(int len)
 		return (2);
 	if (len <= 500)
 		return (5);
-	return (0);
+	return (5);
 }
 
 static int	ft_is_in_chunk(int all_nbr_len, int chunk, int val)
@@ -91,7 +91,7 @@ static int	ft_push_elm_to_b_len(int stack_a_len, int a_elm_pos,
 	return (ft_abs(ra_n) + ft_abs(rb_n) + rb_after_pb);
 }
 
-static int	ft_find_b_elm(
+static int	ft_find_b_elm_pos(
 	t_list *stack_a, t_list *stack_b, int a_elm_pos, int stack_a_len)
 {
 	int	i;
@@ -132,7 +132,7 @@ static void	ft_push_elm_to_b(
 
 	rb_after_pb = 0;
 	stack_b_len = ft_lstsize(*stack_b);
-	b_elm_pos = ft_find_b_elm(*stack_a, *stack_b, min_elm_pos, stack_a_len);
+	b_elm_pos = ft_find_b_elm_pos(*stack_a, *stack_b, min_elm_pos, stack_a_len);
 	rb_n = ft_move_elm_front_len(stack_b_len, b_elm_pos);
 	if (rb_n < 0)
 		rb_after_pb = 1;
@@ -196,7 +196,7 @@ static int	ft_min_elm(t_list *stack_a, t_list *stack_b,
 	{
 		a_elm_pos = ft_stack_elm_pos(stack_a, nolis_list->content);
 		tmp_move = ft_push_elm_to_b_len(stack_a_len, a_elm_pos, stack_b_len,
-				ft_find_b_elm(stack_a, stack_b, a_elm_pos, stack_a_len));
+				ft_find_b_elm_pos(stack_a, stack_b, a_elm_pos, stack_a_len));
 		if (tmp_move < min_move && tmp_move != -1)
 		{
 			min_move = tmp_move;
