@@ -6,12 +6,22 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:51:24 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/16 14:20:31 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/16 17:43:19 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
+
+// LIBFT
+void	ft_strswap(char **s1, char **s2)
+{
+	char	*tmp;
+
+	tmp = *s1;
+	*s1 = *s2;
+	*s2 = tmp;
+}
 
 // TEST
 void	ft_print_arr(int *arr, int len)
@@ -74,6 +84,12 @@ static char	*ft_get_action_combo(char *action1, char *action2)
 	if ((!ft_strncmp(action1, "rra", 3) && !ft_strncmp(action2, "rrb", 3))
 		|| (!ft_strncmp(action1, "rrb", 3) && !ft_strncmp(action2, "rra", 3)))
 		return ("rrr");
+	if ((!ft_strncmp(action1, "rb", 2) && !ft_strncmp(action2, "rrr", 3))
+		|| (!ft_strncmp(action1, "rrr", 3) && !ft_strncmp(action2, "rb", 2)))
+		return ("rra");
+	if ((!ft_strncmp(action1, "ra", 2) && !ft_strncmp(action2, "rrr", 3))
+		|| (!ft_strncmp(action1, "rrr", 3) && !ft_strncmp(action2, "ra", 2)))
+		return ("rrb");
 	return (NULL);
 }
 
@@ -95,6 +111,15 @@ static int	ft_action_check_useless(char *action1, char *action2)
 	return (0);
 }
 
+static void	ft_fix_longcombo(char **action1, char **action2)
+{
+	if (!*action1 || !*action2)
+		return ;
+	if ((!ft_strncmp(*action1, "rra", 3) && !ft_strncmp(*action2, "rrr", 3))
+		|| (!ft_strncmp(*action1, "rrb", 3) && !ft_strncmp(*action2, "rrr", 3)))
+		ft_strswap(action1, action2);
+}
+
 void	ft_print_action(char *last_action)
 {
 	static char	*previus_action;
@@ -105,6 +130,7 @@ void	ft_print_action(char *last_action)
 	else
 	{
 		combo = ft_get_action_combo(previus_action, last_action);
+		ft_fix_longcombo(&previus_action, &last_action);
 		if (combo)
 			previus_action = combo;
 		else if (ft_action_check_useless(previus_action, last_action))
