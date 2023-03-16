@@ -62,3 +62,6 @@ push_swap_visualizer/
 visualizer
 push_swap 2
 *.txt
+*.log
+push_swap_tester_1/
+checker
