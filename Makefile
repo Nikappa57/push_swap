@@ -6,7 +6,7 @@
 #    By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/26 14:47:54 by mcerchi           #+#    #+#              #
-#    Updated: 2023/03/10 20:08:17 by lorenzogaud      ###   ########.fr        #
+#    Updated: 2023/03/17 14:32:24 by lorenzogaud      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,8 @@ SRC			=	push_swap.c ft_print_utils.c ft_arg_parse.c ft_stack_utils.c \
 				ft_math_utils.c ft_push_to_a.c ft_action_utils.c \
 				ft_short_sort.c ft_simplify_stack.c ft_push_to_b.c
 
+SRC_BONUS	=	checker.c get_next_line.c get_next_line_utils.c
+				
 LIBFT		=	libft/libft.a
 
 OBJ			=	$(SRC:.c=.o)
