@@ -6,7 +6,7 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 19:22:47 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/09 12:44:18 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/18 12:24:45 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,6 @@ static void	ft_sort_3(t_list **stack_a)
 	}
 	else if ((e1 < e2) && (e2 > e3) && (e3 < e1))
 		ft_rra(stack_a);
-}
-
-static int	ft_is_sort(t_list *stack_a)
-{
-	if (!stack_a)
-		return (1);
-	while (stack_a->next)
-	{
-		if (stack_a->content > stack_a->next->content)
-			return (0);
-		stack_a = stack_a->next;
-	}
-	return (1);
 }
 
 void	ft_short_sort(t_list **stack_a, t_list **stack_b, int stack_a_len)

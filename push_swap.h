@@ -6,7 +6,7 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 14:03:19 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/18 11:57:35 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/18 12:27:29 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int		ft_stack_elm_val(t_list *stack, int pos);
 int		ft_stack_elm_ismax(t_list *stack, int elm_val);
 int		ft_stack_elm_ismin(t_list *stack, int elm_val);
 int		ft_stack_find_min_pos(t_list *stack);
+int		ft_is_sort(t_list *stack_a);
 
 int		ft_abs(int n);
 int		ft_max(int n1, int n2);
