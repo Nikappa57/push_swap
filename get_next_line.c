@@ -6,7 +6,7 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 12:11:02 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/17 13:56:33 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/17 14:59:24 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static char	*ft_read_line(int fd, char *saved)
 			return (NULL);
 		}
 		buff[read_len] = '\0';
-		saved = ft_strjoin(saved, buff);
+		saved = ft_strjoin_gnl(saved, buff);
 	}
 	free(buff);
 	return (saved);
@@ -56,7 +56,7 @@ char	*get_next_line(int fd)
 	str_end = 0;
 	while (saved[str_end] != '\n' && saved[str_end])
 		str_end++;
-	line = ft_substr(saved, 0, str_end + 1, 0);
-	saved = ft_substr(saved, str_end + 1, BUFFER_SIZE + 1, 1);
+	line = ft_substr_gnl(saved, 0, str_end + 1, 0);
+	saved = ft_substr_gnl(saved, str_end + 1, BUFFER_SIZE + 1, 1);
 	return (line);
 }

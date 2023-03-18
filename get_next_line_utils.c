@@ -6,7 +6,7 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 13:28:16 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/02/22 15:53:56 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/17 14:58:27 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin_gnl(char *s1, char *s2)
 {
 	size_t	i;
 	size_t	s1_len;
@@ -63,7 +63,7 @@ static char	*ft_free_s(char *s, int free_s)
 	return (NULL);
 }
 
-char	*ft_substr(char *s, unsigned int start, size_t len, int free_s)
+char	*ft_substr_gnl(char *s, unsigned int start, size_t len, int free_s)
 {
 	char	*sub;
 	size_t	s_len;
