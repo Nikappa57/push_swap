@@ -6,7 +6,7 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 14:03:19 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/16 14:07:34 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/18 11:57:35 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,11 @@ void	ft_push_to_a(t_list **stack_a, t_list **stack_b,
 			int stack_a_len, int stack_b_len);
 void	ft_push_to_b(
 			t_list **stack_a, t_list **stack_b, int stack_a_len);
+
+void	ft_p_stack(t_list **from, t_list **dst);
+void	ft_s_stack(t_list **stack);
+void	ft_r_stack(t_list **stack);
+void	ft_rr_stack(t_list **stack);
 
 void	ft_sa(t_list **stack_a);
 void	ft_sb(t_list **stack_b);
