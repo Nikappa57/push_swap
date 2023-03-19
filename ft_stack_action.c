@@ -6,11 +6,12 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 23:36:30 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/18 13:55:13 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/19 01:31:23 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
 void	ft_p_stack(t_list **from, t_list **dst)
 {
@@ -35,6 +36,8 @@ void	ft_s_stack(t_list **stack)
 		return ;
 	second = *stack;
 	first = second->next;
+	if (!first)
+		return ;
 	second->next = first->next;
 	first->next = second;
 	*stack = first;
@@ -49,6 +52,8 @@ void	ft_r_stack(t_list **stack)
 		return ;
 	back = *stack;
 	front = back->next;
+	if (!front)
+		return ;
 	ft_lstlast(*stack)->next = back;
 	back->next = NULL;
 	*stack = front;

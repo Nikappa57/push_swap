@@ -6,7 +6,7 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:45:50 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/18 13:44:53 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/19 01:31:42 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,8 @@ static void	ft_read_execute(t_list **stack_a, t_list **stack_b)
 	str = get_next_line(0);
 	while (*str != '\n')
 	{
-		printf("STR: %s\n", str);
 		if (*str == 'p')
-			ft_action_execute_p(stack_a, stack_a, str);
+			ft_action_execute_p(stack_a, stack_b, str);
 		else if (*str == 's')
 			ft_action_execute_s(stack_a, stack_b, str);
 		else if (*str == 'r')
