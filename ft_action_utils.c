@@ -6,12 +6,11 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 14:04:52 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/16 13:57:45 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/20 14:09:10 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 void	ft_ra_n(t_list **stack_a, int ra_n)
 {
@@ -34,12 +33,6 @@ void	ft_ra_n(t_list **stack_a, int ra_n)
 			ft_rra(stack_a);
 }
 
-void	ft_ra_n_pb(t_list **stack_a, t_list **stack_b, int ra_n)
-{
-	ft_ra_n(stack_a, ra_n);
-	ft_pb(stack_a, stack_b);
-}
-
 void	ft_rb_n(t_list **stack_b, int rb_n)
 {
 	int	stack_b_len;
@@ -59,12 +52,6 @@ void	ft_rb_n(t_list **stack_b, int rb_n)
 	else
 		while (rb_n++)
 			ft_rrb(stack_b);
-}
-
-void	ft_rb_n_pa(t_list **stack_a, t_list **stack_b, int rb_n)
-{
-	ft_rb_n(stack_b, rb_n);
-	ft_pa(stack_a, stack_b);
 }
 
 static void	ft_r_find_combo(

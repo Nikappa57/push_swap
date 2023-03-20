@@ -6,13 +6,12 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:45:50 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/19 01:31:42 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/20 14:10:16 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "get_next_line.h"
-#include <stdio.h>
 
 static void	ft_action_execute_p(t_list **stack_a, t_list **stack_b, char *str)
 {
@@ -94,10 +93,12 @@ int	main(int argc, char **argv)
 	if (!ft_parse_args(argc, argv, &stack_a))
 		return (0);
 	ft_read_execute(&stack_a, &stack_b);
-	if (!ft_is_sort(stack_a)) // TODO: controllar se serve che stack_b sia vuoto
+	if (!ft_is_sort(stack_a))
 		ft_putstr_fd("KO\n", 1);
 	else
 		ft_putstr_fd("OK\n", 1);
 	ft_lstclear(&stack_a);
 	ft_lstclear(&stack_b);
 }
+
+// TODO: controllar se serve che stack_b sia vuoto

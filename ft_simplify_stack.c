@@ -6,12 +6,11 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 18:24:33 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/09 19:41:54 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/20 14:14:16 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 static void	ft_qs_swap(int *a, int *b)
 {
@@ -64,8 +63,6 @@ static int	ft_arr_val_pos(int *arr, int len, int val)
 			return (i);
 		i++;
 	}
-	printf("VAL: %d\n", val);
-	ft_print_arr(arr, len);
 	return (ft_print_error());
 }
 

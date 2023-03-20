@@ -6,7 +6,7 @@
 #    By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/26 14:47:54 by mcerchi           #+#    #+#              #
-#    Updated: 2023/03/18 13:23:55 by lorenzogaud      ###   ########.fr        #
+#    Updated: 2023/03/20 14:34:22 by lorenzogaud      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SRC			=	push_swap.c ft_print_utils.c ft_arg_parse.c ft_stack_utils.c \
 				ft_action_swap.c ft_action_rotate.c ft_action_push.c ft_lis.c \
 				ft_math_utils.c ft_push_to_a.c ft_action_utils.c ft_stack_action.c \
 				ft_action_reverse_rotate.c ft_short_sort.c ft_simplify_stack.c \
-				ft_stack_sort_utils.c ft_push_to_b.c
+				ft_stack_sort_utils.c ft_push_to_b.c ft_push_to_a_utils.c ft_chunk.c
 
 SRC_BONUS	=	checker.c get_next_line.c get_next_line_utils.c ft_arg_parse.c \
 				ft_stack_action.c ft_print_utils.c ft_stack_sort_utils.c \

@@ -6,12 +6,11 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 19:33:03 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/07 19:49:39 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/20 14:10:19 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 static int	ft_issdigit(char *s)
 {

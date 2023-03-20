@@ -6,35 +6,11 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:47:07 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/06 20:08:39 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/20 14:37:44 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	ft_stack_find_min_pos(t_list *stack)
-{
-	int	i;
-	int	min;
-	int	min_pos;
-
-	if (!stack)
-		return (ft_print_error());
-	min_pos = 0;
-	i = 0;
-	min = stack->content;
-	while (stack)
-	{
-		if (stack->content < min)
-		{
-			min = stack->content;
-			min_pos = i;
-		}
-		i++;
-		stack = stack->next;
-	}
-	return (min_pos);
-}
 
 int	ft_stack_elm_pos(t_list *stack, int content)
 {
@@ -82,30 +58,39 @@ int	*ft_copy_stack(t_list *stack, int len)
 	return (cpy);
 }
 
-int	ft_stack_elm_ismax(t_list *stack, int elm_val)
+void ft_stack_rmv_elm(t_list **stack, int elm_val)
 {
-	int	result;
+	int		i;
+	int		position;
+	t_list	*tmp;
+	t_list	*prev;
 
-	result = 1;
-	while (stack != NULL)
+	i = 0;
+	position = ft_stack_elm_pos(*stack, elm_val) + 1;
+	tmp = *stack;
+	prev = *stack;
+	while (i < position)
 	{
-		if (stack->content > elm_val)
-			result = 0;
-		stack = stack->next;
+		if (i == 0 && position == 1)
+		{
+			*stack = (*stack)->next;
+			ft_lstdelone(tmp);
+		}
+		else
+		{
+			if (i == position - 1 && tmp)
+			{
+				prev->next = tmp->next;
+				ft_lstdelone(tmp);
+			}
+			else
+			{
+				prev = tmp;
+				if (prev == NULL)
+					break ;
+				tmp = tmp->next;
+			}
+		}
+		i++;
 	}
-	return (result);
-}
-
-int	ft_stack_elm_ismin(t_list *stack, int elm_val)
-{
-	int	result;
-
-	result = 1;
-	while (stack != NULL)
-	{
-		if (stack->content < elm_val)
-			result = 0;
-		stack = stack->next;
-	}
-	return (result);
 }

@@ -6,63 +6,11 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:51:24 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/16 17:43:19 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/20 14:15:20 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
-
-// LIBFT
-void	ft_strswap(char **s1, char **s2)
-{
-	char	*tmp;
-
-	tmp = *s1;
-	*s1 = *s2;
-	*s2 = tmp;
-}
-
-// TEST
-void	ft_print_arr(int *arr, int len)
-{
-	int	i;
-
-	i = 0;
-	while (i < len)
-	{
-		ft_putnbr_fd(arr[i++], 1);
-		ft_putchar_fd(' ', 1);
-	}
-	ft_putchar_fd('\n', 1);
-}
-
-// TEST
-void	ft_print_stack(t_list *stack_a, t_list *stack_b)
-{
-	size_t	i;
-
-	i = 0;
-	while (stack_a || stack_b)
-	{
-		if (stack_a)
-		{
-			ft_putnbr_fd(stack_a->content, 1);
-			ft_putchar_fd(' ', 1);
-			stack_a = stack_a->next;
-		}
-		else
-			ft_putstr_fd("  ", 1);
-		if (stack_b)
-		{
-			ft_putnbr_fd(stack_b->content, 1);
-			ft_putchar_fd(' ', 1);
-			stack_b = stack_b->next;
-		}
-		ft_putchar_fd('\n', 1);
-	}
-	ft_putstr_fd("- -\na b\n\n", 1);
-}
 
 int	ft_print_error(void)
 {

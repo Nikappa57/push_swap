@@ -6,12 +6,11 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 23:36:30 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/19 01:31:23 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/20 14:10:36 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 void	ft_p_stack(t_list **from, t_list **dst)
 {
