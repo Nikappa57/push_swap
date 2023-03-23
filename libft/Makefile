@@ -6,52 +6,43 @@
 #    By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/25 12:04:15 by lgaudino          #+#    #+#              #
-#    Updated: 2023/03/20 14:13:20 by lorenzogaud      ###   ########.fr        #
+#    Updated: 2023/03/23 12:01:29 by lorenzogaud      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+NAME				=	libft.a
 
-SRCS			=	ft_isalnum.c ft_isprint.c ft_memcmp.c ft_strjoin.c \
-					ft_strlcat.c ft_strncmp.c ft_atoi.c ft_isalpha.c \
-					ft_memcpy.c ft_strchr.c ft_strlcpy.c ft_substr.c \
-					ft_strnstr.c ft_tolower.c ft_bzero.c ft_isascii.c \
-					ft_memmove.c ft_strdup.c ft_strlen.c ft_strrchr.c \
-					ft_toupper.c ft_calloc.c ft_isdigit.c ft_memchr.c \
-					ft_memset.c ft_strtrim.c ft_split.c ft_itoa.c \
-					ft_strmapi.c ft_striteri.c ft_putchar_fd.c \
-					ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
-					ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
-					ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c \
-					ft_lstmap.c ft_strswap.c
+DIR_SRCS			=	srcs
+DIR_OBJS			=	objs
+SUBDIRS				=	ft_is ft_to ft_mem ft_str ft_put ft_lst ft_len ft_printf gnl
 
-OBJS			= $(SRCS:.c=.o)
+SRCS_PATHS			=	$(foreach dir, $(SUBDIRS), $(addprefix $(DIR_SRCS)/, $(dir)))
+OBJS_PATHS			=	$(foreach dir, $(SUBDIRS), $(addprefix $(DIR_OBJS)/, $(dir)))
+SRCS				=	$(foreach dir, $(SRCS_PATHS), $(wildcard $(dir)/*.c))
+OBJS				=	$(subst $(DIR_SRCS), $(DIR_OBJS), $(SRCS:.c=.o))
 
-BONUS			=	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
-					ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c \
-					ft_lstmap.c
+INCLUDES			=	-I includes
 
-BONUS_OBJS		= $(BONUS:.c=.o)
+CC					=	gcc
+CFLAGS				=	-Wall -Wextra -Werror
+RM					=	/bin/rm -f
 
-CC				= gcc
-RM				= rm -f
-CFLAGS			= -Wall -Wextra -Werror -I.
+$(DIR_OBJS)/%.o :	$(DIR_SRCS)/%.c
+					mkdir -p $(DIR_OBJS) $(OBJS_PATHS)
+					$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
-NAME			= libft.a
+all:				$(NAME)
 
-all:			$(NAME)
-
-$(NAME):		$(OBJS)
-				ar rcs $(NAME) $(OBJS)
+$(NAME):			$(OBJS)
+					ar -rcs $(NAME) $(OBJS)
 
 clean:
-				$(RM) $(OBJS) $(BONUS_OBJS)
+					$(RM) $(OBJS)
+					$(RM) -r $(DIR_OBJS)
 
-fclean:			clean
-				$(RM) $(NAME)
+fclean:				clean
+					$(RM) $(NAME)
 
-re:				fclean $(NAME)
+re:					fclean all
 
-bonus:			$(BONUS_OBJS) $(OBJS)
-				ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
-
-.PHONY:			all clean fclean re bonus
+.PHONY:				all clean fclean re
