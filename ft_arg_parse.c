@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_arg_parse.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
+/*   By: lgaudino <lgaudino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 19:33:03 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/20 14:10:19 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/23 19:30:58 by lgaudino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,15 @@ static int	ft_parse_args_list(int argc, char **argv, t_list **stack_a, int i)
 	return (1);
 }
 
-int	ft_parse_args(int argc, char **argv, t_list **stack_a)
+int	ft_parse_args(int *argc, char **argv, t_list **stack_a)
 {
 	char	**args;
 	int		args_len;
 	int		result;
 
-	if (argc < 2)
+	if (*argc < 2)
 		result = 0;
-	else if (argc == 2)
+	else if (*argc == 2)
 	{
 		args_len = 0;
 		args = ft_split(argv[1], ' ');
@@ -68,8 +68,9 @@ int	ft_parse_args(int argc, char **argv, t_list **stack_a)
 			args_len++;
 		result = ft_parse_args_list(args_len, args, stack_a, 0);
 		free(args);
+		*argc = args_len + 1;
 	}
 	else
-		result = ft_parse_args_list(argc, argv, stack_a, 1);
+		result = ft_parse_args_list(*argc, argv, stack_a, 1);
 	return (result);
 }

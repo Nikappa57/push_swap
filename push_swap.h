@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
+/*   By: lgaudino <lgaudino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 14:03:19 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/20 14:44:10 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/23 19:21:43 by lgaudino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ int		ft_stack_elm_ismax(t_list *stack, int elm_val);
 int		ft_stack_elm_ismin(t_list *stack, int elm_val);
 int		ft_stack_find_min_pos(t_list *stack);
 int		ft_is_sort(t_list *stack_a);
-void 	ft_stack_rmv_elm(t_list **stack, int elm_val);
+void	ft_stack_rmv_elm(t_list **stack, int elm_val);
 
 int		ft_abs(int n);
 int		ft_max(int n1, int n2);
 int		ft_min(int n1, int n2);
 
-int		ft_parse_args(int argc, char **argv, t_list **stack_a);
+int		ft_parse_args(int *argc, char **argv, t_list **stack_a);
 
 int		*ft_lis_arr(int *v, int len);
 int		ft_lis_max(int *lis_arr, int len);

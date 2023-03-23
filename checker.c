@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
+/*   By: lgaudino <lgaudino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:45:50 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/20 14:10:16 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/23 19:25:40 by lgaudino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int	main(int argc, char **argv)
 
 	stack_a = NULL;
 	stack_b = NULL;
-	if (!ft_parse_args(argc, argv, &stack_a))
+	if (!ft_parse_args(&argc, argv, &stack_a))
 		return (0);
 	ft_read_execute(&stack_a, &stack_b);
 	if (!ft_is_sort(stack_a))

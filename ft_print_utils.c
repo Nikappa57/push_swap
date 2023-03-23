@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
+/*   By: lgaudino <lgaudino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:51:24 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/20 14:15:20 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/23 19:18:28 by lgaudino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int	ft_action_check_useless(char *action1, char *action2)
 		return (0);
 	if ((!ft_strncmp(action1, "ra", 2) && !ft_strncmp(action2, "rra", 3))
 		|| (!ft_strncmp(action1, "rra", 3) && !ft_strncmp(action2, "ra", 2))
-		|| !ft_strncmp(action1, "rb", 2) && !ft_strncmp(action2, "rrb", 3)
+		|| (!ft_strncmp(action1, "rb", 2) && !ft_strncmp(action2, "rrb", 3))
 		|| (!ft_strncmp(action1, "rrb", 3) && !ft_strncmp(action2, "rb", 2)))
 		return (1);
 	if ((!ft_strncmp(action1, "rr", 3) && !ft_strncmp(action2, "rrr", 3))

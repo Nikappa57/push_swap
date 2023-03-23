@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
+/*   By: lgaudino <lgaudino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:15:00 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/20 14:08:19 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/23 19:31:35 by lgaudino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int argc, char **argv)
 
 	stack_a = NULL;
 	stack_b = NULL;
-	if (!ft_parse_args(argc, argv, &stack_a))
+	if (!ft_parse_args(&argc, argv, &stack_a))
 		return (0);
 	if (argc - 1 <= 5)
 	{
