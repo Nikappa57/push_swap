@@ -6,7 +6,7 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 18:24:33 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/20 14:14:16 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/23 22:14:32 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,20 +63,25 @@ static int	ft_arr_val_pos(int *arr, int len, int val)
 			return (i);
 		i++;
 	}
-	return (ft_print_error());
+	return (-1);
 }
 
-void	ft_simplify_stack(t_list *stack_a, int stack_a_len)
+void	ft_simplify_stack(t_list **stack_a, int stack_a_len)
 {
 	int	*sorted_arr;
 
-	sorted_arr = ft_copy_stack(stack_a, stack_a_len);
+	sorted_arr = ft_copy_stack(*stack_a, stack_a_len);
 	ft_quicksort(sorted_arr, 0, stack_a_len - 1);
-	while (stack_a)
+	while (*stack_a)
 	{
-		stack_a->content = ft_arr_val_pos(
-				sorted_arr, stack_a_len, stack_a->content);
-		stack_a = stack_a->next;
+		(*stack_a)->content = ft_arr_val_pos(
+				sorted_arr, stack_a_len, (*stack_a)->content);
+		if ((*stack_a)->content == -1)
+		{
+			free(sorted_arr);
+			ft_print_error(stack_a, NULL);
+		}
+		(*stack_a) = (*stack_a)->next;
 	}
 	free(sorted_arr);
 }

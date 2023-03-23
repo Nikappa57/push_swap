@@ -6,7 +6,7 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:47:07 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/20 14:37:44 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/23 22:17:16 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_stack_elm_val(t_list *stack, int pos)
 	while (i++ < pos)
 	{
 		if (!(stack->next))
-			return (ft_print_error());
+			return (0);
 		stack = stack->next;
 	}
 	return (stack->content);
@@ -48,7 +48,7 @@ int	*ft_copy_stack(t_list *stack, int len)
 
 	cpy = (int *)malloc(sizeof(int) * len);
 	if (!cpy)
-		ft_print_error();
+		return (NULL);
 	i = 0;
 	while (stack)
 	{

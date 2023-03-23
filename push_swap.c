@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaudino <lgaudino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:15:00 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/23 19:31:35 by lgaudino         ###   ########.fr       */
+/*   Updated: 2023/03/23 22:26:04 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int argc, char **argv)
 		ft_print_action(NULL);
 		return (0);
 	}
-	ft_simplify_stack(stack_a, argc - 1);
+	ft_simplify_stack(&stack_a, argc - 1);
 	ft_push_to_b(&stack_a, &stack_b, argc - 1);
 	stack_a_len = ft_lstsize(stack_a);
 	stack_b_len = ft_lstsize(stack_b);

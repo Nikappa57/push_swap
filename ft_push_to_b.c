@@ -6,7 +6,7 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 13:11:22 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/20 14:38:25 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/23 22:18:19 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ void	ft_push_to_b(
 	stack_b_len = 0;
 	all_nbr_len = stack_a_len;
 	nolis_list = NULL;
-	ft_nolis(*stack_a, stack_a_len, &nolis_list);
+	ft_nolis(stack_a, stack_a_len, &nolis_list);
 	nolis_len = ft_lstsize(nolis_list);
 	while (nolis_len > 0)
 	{

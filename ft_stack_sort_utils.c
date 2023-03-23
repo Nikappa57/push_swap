@@ -6,7 +6,7 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 12:26:01 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/20 14:37:48 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/23 22:16:08 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_is_sort(t_list *stack_a)
 int	ft_move_elm_front_len(int stack_len, int elm_pos)
 {
 	if (elm_pos < 0)
-		return (ft_print_error());
+		return (0);
 	if (elm_pos <= (int)(stack_len / 2))
 		return (elm_pos);
 	else
@@ -42,7 +42,7 @@ int	ft_stack_find_min_pos(t_list *stack)
 	int	min_pos;
 
 	if (!stack)
-		return (ft_print_error());
+		return (0);
 	min_pos = 0;
 	i = 0;
 	min = stack->content;

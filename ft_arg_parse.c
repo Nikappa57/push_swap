@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_arg_parse.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaudino <lgaudino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 19:33:03 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/23 19:30:58 by lgaudino         ###   ########.fr       */
+/*   Updated: 2023/03/23 22:20:14 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,10 @@ static int	ft_parse_args_list(int argc, char **argv, t_list **stack_a, int i)
 	while (i < argc)
 	{
 		if (!ft_issdigit(argv[i]))
-		{
-			ft_lstclear(stack_a);
-			return (ft_print_error());
-		}
+			return (ft_print_error(stack_a, NULL));
 		content = ft_atoi(argv[i++]);
 		if ((*stack_a != NULL) && (ft_stack_elm_pos(*stack_a, content) != -1))
-		{
-			ft_lstclear(stack_a);
-			return (ft_print_error());
-		}
+			return (ft_print_error(stack_a, NULL));
 		tmp = ft_lstnew(content);
 		ft_lstadd_back(stack_a, tmp);
 	}

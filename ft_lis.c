@@ -6,7 +6,7 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 21:13:43 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/20 14:38:38 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/23 22:18:04 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,16 @@ int	ft_lis_max(int *lis_arr, int len)
 	return (max);
 }
 
-void	ft_nolis(t_list *stack_a, int v_len, t_list **nolis)
+void	ft_nolis(t_list **stack_a, int v_len, t_list **nolis)
 {
 	int	i;
 	int	*v;
 	int	lis_max;
 	int	*lis_arr;
 
-	v = ft_copy_stack(stack_a, v_len);
+	v = ft_copy_stack(*stack_a, v_len);
+	if (!v)
+		ft_print_error(stack_a, NULL);
 	lis_arr = ft_lis_arr(v, v_len);
 	lis_max = ft_lis_max(lis_arr, v_len);
 	while (v_len > 0)

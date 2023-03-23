@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaudino <lgaudino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:45:50 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/23 19:25:40 by lgaudino         ###   ########.fr       */
+/*   Updated: 2023/03/23 22:11:28 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	ft_action_execute_p(t_list **stack_a, t_list **stack_b, char *str)
 	else if (!ft_strncmp(str, "pb\n", 3))
 		ft_p_stack(stack_a, stack_b);
 	else
-		ft_print_error();
+		ft_print_error(stack_a, stack_b);
 }
 
 static void	ft_action_execute_s(t_list **stack_a, t_list **stack_b, char *str)
@@ -35,7 +35,7 @@ static void	ft_action_execute_s(t_list **stack_a, t_list **stack_b, char *str)
 		ft_s_stack(stack_b);
 	}
 	else
-		ft_print_error();
+		ft_print_error(stack_a, stack_b);
 }
 
 static void	ft_action_execute_r(t_list **stack_a, t_list **stack_b, char *str)
@@ -59,7 +59,7 @@ static void	ft_action_execute_r(t_list **stack_a, t_list **stack_b, char *str)
 		ft_rr_stack(stack_b);
 	}
 	else
-		ft_print_error();
+		ft_print_error(stack_a, stack_b);
 }
 
 static void	ft_read_execute(t_list **stack_a, t_list **stack_b)
@@ -76,7 +76,7 @@ static void	ft_read_execute(t_list **stack_a, t_list **stack_b)
 		else if (*str == 'r')
 			ft_action_execute_r(stack_a, stack_b, str);
 		else
-			ft_print_error();
+			ft_print_error(stack_a, stack_b);
 		str = get_next_line(0);
 	}
 }

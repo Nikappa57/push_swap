@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaudino <lgaudino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 14:03:19 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/23 19:21:43 by lgaudino         ###   ########.fr       */
+/*   Updated: 2023/03/23 22:18:25 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 
 # include "libft/libft.h"
 
-int		ft_print_error(void);
+int		ft_print_error(t_list **stack_a, t_list **stack_b);
 void	ft_print_action(char *last_action);
 
 void	ft_short_sort(t_list **stack_a, t_list **stack_b, int stack_a_len);
 
-void	ft_simplify_stack(t_list *stack_a, int stack_a_len);
+void	ft_simplify_stack(t_list **stack_a, int stack_a_len);
 
 // TEST
 int		ft_check_ord_after_ra(t_list *stack_a, int ra_n);
@@ -41,7 +41,7 @@ int		ft_parse_args(int *argc, char **argv, t_list **stack_a);
 
 int		*ft_lis_arr(int *v, int len);
 int		ft_lis_max(int *lis_arr, int len);
-void	ft_nolis(t_list *stack_a, int v_len, t_list **nolis);
+void	ft_nolis(t_list **stack_a, int v_len, t_list **nolis);
 
 void	ft_push_to_a(t_list **stack_a, t_list **stack_b,
 			int stack_a_len, int stack_b_len);

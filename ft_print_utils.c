@@ -3,17 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaudino <lgaudino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:51:24 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/23 19:18:28 by lgaudino         ###   ########.fr       */
+/*   Updated: 2023/03/23 22:20:37 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_print_error(void)
+int	ft_print_error(t_list **stack_a, t_list **stack_b)
 {
+	if (stack_a)
+		ft_lstclear(stack_a);
+	if (stack_b)
+		ft_lstclear(stack_b);
 	ft_putstr_fd("Error\n", 2);
 	exit(0);
 	return (0);
