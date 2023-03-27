@@ -6,7 +6,7 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:15:00 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/23 22:26:04 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/24 21:25:25 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 	stack_a = NULL;
 	stack_b = NULL;
 	if (!ft_parse_args(&argc, argv, &stack_a))
-		return (0);
+		return (ft_print_error(&stack_a, &stack_b));
 	if (argc - 1 <= 5)
 	{
 		ft_short_sort(&stack_a, &stack_b, argc - 1);

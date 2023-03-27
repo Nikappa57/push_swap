@@ -6,7 +6,7 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 18:24:33 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/23 22:14:32 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/23 23:35:49 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,20 +68,22 @@ static int	ft_arr_val_pos(int *arr, int len, int val)
 
 void	ft_simplify_stack(t_list **stack_a, int stack_a_len)
 {
-	int	*sorted_arr;
+	int		*sorted_arr;
+	t_list	*elm;
 
+	elm = *stack_a;
 	sorted_arr = ft_copy_stack(*stack_a, stack_a_len);
 	ft_quicksort(sorted_arr, 0, stack_a_len - 1);
-	while (*stack_a)
+	while (elm)
 	{
-		(*stack_a)->content = ft_arr_val_pos(
-				sorted_arr, stack_a_len, (*stack_a)->content);
-		if ((*stack_a)->content == -1)
+		elm->content = ft_arr_val_pos(
+				sorted_arr, stack_a_len, elm->content);
+		if (elm->content == -1)
 		{
 			free(sorted_arr);
 			ft_print_error(stack_a, NULL);
 		}
-		(*stack_a) = (*stack_a)->next;
+		elm = elm->next;
 	}
 	free(sorted_arr);
 }

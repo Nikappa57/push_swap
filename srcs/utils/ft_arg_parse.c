@@ -6,7 +6,7 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 19:33:03 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/23 22:20:14 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/27 23:15:41 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,20 @@ static int	ft_issdigit(char *s)
 	return (1);
 }
 
-static int	ft_parse_args_list(int argc, char **argv, t_list **stack_a, int i)
+static int	ft_parse_args_list(int argc, char **argv, t_list **stack_a)
 {
 	t_list	*tmp;
 	int		content;
+	int		i;
 
+	i = 0;
 	while (i < argc)
 	{
 		if (!ft_issdigit(argv[i]))
-			return (ft_print_error(stack_a, NULL));
+			return (0);
 		content = ft_atoi(argv[i++]);
 		if ((*stack_a != NULL) && (ft_stack_elm_pos(*stack_a, content) != -1))
-			return (ft_print_error(stack_a, NULL));
+			return (0);
 		tmp = ft_lstnew(content);
 		ft_lstadd_back(stack_a, tmp);
 	}
@@ -52,19 +54,22 @@ int	ft_parse_args(int *argc, char **argv, t_list **stack_a)
 	int		args_len;
 	int		result;
 
-	if (*argc < 2)
-		result = 0;
-	else if (*argc == 2)
+	if (*argc == 2)
 	{
 		args_len = 0;
 		args = ft_split(argv[1], ' ');
 		while (args[args_len])
 			args_len++;
-		result = ft_parse_args_list(args_len, args, stack_a, 0);
-		free(args);
+		result = ft_parse_args_list(args_len, args, stack_a);
 		*argc = args_len + 1;
+		while (--args_len >= 0)
+			free(args[args_len]);
+		free(args);
 	}
 	else
-		result = ft_parse_args_list(*argc, argv, stack_a, 1);
+		result = ft_parse_args_list(*argc - 1, argv + 1, stack_a);
 	return (result);
 }
+
+// TODO: error check, test_case 3 
+//		penso sia che manca il free(args)
