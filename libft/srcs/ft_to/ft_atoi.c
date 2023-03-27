@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaudino <lgaudino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 10:18:38 by lgaudino          #+#    #+#             */
-/*   Updated: 2023/01/25 10:20:41 by lgaudino         ###   ########.fr       */
+/*   Updated: 2023/03/27 22:57:50 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ static int	ft_isspace(char c)
 
 int	ft_atoi(const char *str)
 {
-	int	nbr;
-	int	sign;
+	long int	nbr;
+	int			sign;
 
 	nbr = 0;
 	sign = 1;
@@ -36,5 +36,11 @@ int	ft_atoi(const char *str)
 		str++;
 	while (ft_isdigit(*str))
 		nbr = (nbr * 10) + (*str++ - '0');
-	return (nbr * sign);
+	nbr *= sign;
+	if ((nbr > 2147483647) || (nbr < -2147483648))
+	{
+		ft_putstr_fd("Error\n", 2);
+		exit(0);
+	}
+	return ((int)nbr);
 }
