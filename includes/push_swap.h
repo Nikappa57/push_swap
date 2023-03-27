@@ -6,7 +6,7 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 14:03:19 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/23 22:31:11 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/28 00:37:56 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 # define PUSH_SWAP_H
 
 # include "libft.h"
+//TEST
+#include <stdio.h>
 
 int		ft_print_error(t_list **stack_a, t_list **stack_b);
 void	ft_print_action(char *last_action);
 
 void	ft_short_sort(t_list **stack_a, t_list **stack_b, int stack_a_len);
-
+int		ft_is_sort(t_list *stack_a);
 void	ft_simplify_stack(t_list **stack_a, int stack_a_len);
 
 // TEST
@@ -78,4 +80,6 @@ int		ft_chunk_len(int len);
 int		ft_is_in_chunk(int all_nbr_len, int chunk, int val);
 int		ft_get_chunk(int val, int all_nbr_len);
 int		ft_is_in_same_chunk(int all_nbr_len, int val_1, int val_2);
+int		ft_is_min_chunk(
+			t_list *stack_a, t_list *stack_b, int a_val, int all_nbr_len);
 #endif
