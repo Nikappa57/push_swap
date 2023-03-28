@@ -6,7 +6,7 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 14:03:19 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/28 00:37:56 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/28 01:57:54 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,5 @@ int		ft_get_chunk(int val, int all_nbr_len);
 int		ft_is_in_same_chunk(int all_nbr_len, int val_1, int val_2);
 int		ft_is_min_chunk(
 			t_list *stack_a, t_list *stack_b, int a_val, int all_nbr_len);
+int		ft_is_max_chunk(t_list *stack_b, int b_val, int all_nbr_len);
 #endif

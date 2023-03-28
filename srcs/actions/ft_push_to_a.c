@@ -6,7 +6,7 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 13:11:22 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/20 14:31:08 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/03/28 02:45:05 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,17 @@ static int	ft_b_elm_pos(t_list *stack_a, t_list *stack_b,
 	min_move = stack_a_len + stack_b_len;
 	while (b_elm_pos < stack_b_len)
 	{
-		ra_n = ft_b_elm_pos_ra(stack_a, stack_b, stack_a_len, b_elm_pos);
-		tmp_move = ft_push_elm_to_a_len(ra_n,
-				ft_move_elm_front_len(stack_b_len, b_elm_pos));
-		if (tmp_move < min_move && tmp_move != -1)
+		if (ft_is_max_chunk(stack_b, ft_stack_elm_val(
+					stack_b, b_elm_pos), stack_a_len + stack_b_len))
 		{
-			min_move = tmp_move;
-			min_elm_pos = b_elm_pos;
+			ra_n = ft_b_elm_pos_ra(stack_a, stack_b, stack_a_len, b_elm_pos);
+			tmp_move = ft_push_elm_to_a_len(ra_n,
+					ft_move_elm_front_len(stack_b_len, b_elm_pos));
+			if (tmp_move < min_move && tmp_move != -1)
+			{
+				min_move = tmp_move;
+				min_elm_pos = b_elm_pos;
+			}
 		}
 		b_elm_pos++;
 	}
