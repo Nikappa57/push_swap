@@ -6,7 +6,7 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:45:50 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/24 21:24:11 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/04/20 12:13:12 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static void	ft_read_execute(t_list **stack_a, t_list **stack_b)
 	char	*str;
 
 	str = get_next_line(0);
-	while (*str != '\n')
+	while (str != NULL && *str != '\n')
 	{
 		if (*str == 'p')
 			ft_action_execute_p(stack_a, stack_b, str);
@@ -89,8 +89,13 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
 	if (!ft_parse_args(&argc, argv, &stack_a))
 		return (ft_print_error(&stack_a, &stack_b));
+	if (ft_lstsize(stack_a) == 0)
+	{
+		ft_lstclear(&stack_a);
+		return (0);
+	}
 	ft_read_execute(&stack_a, &stack_b);
-	if (!ft_is_sort(stack_a))
+	if ((!ft_is_sort(stack_a)) || (ft_lstsize(stack_b) != 0))
 		ft_putstr_fd("KO\n", 1);
 	else
 		ft_putstr_fd("OK\n", 1);
@@ -98,5 +103,3 @@ int	main(int argc, char **argv)
 	ft_lstclear(&stack_b);
 	return (0);
 }
-
-// TODO: controllar se serve che stack_b sia vuoto
