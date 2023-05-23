@@ -6,7 +6,7 @@
 /*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:45:50 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/04/20 12:13:12 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/05/23 23:01:17 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,10 @@ static void	ft_read_execute(t_list **stack_a, t_list **stack_b)
 			ft_action_execute_r(stack_a, stack_b, str);
 		else
 			ft_print_error(stack_a, stack_b);
+		free(str);
 		str = get_next_line(0);
 	}
+	free(str);
 }
 
 int	main(int argc, char **argv)
