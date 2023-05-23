@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_stack_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
+/*   By: lgaudino <lgaudino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:47:07 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/03/23 22:17:16 by lorenzogaud      ###   ########.fr       */
+/*   Updated: 2023/05/23 13:53:42 by lgaudino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	*ft_copy_stack(t_list *stack, int len)
 	return (cpy);
 }
 
-void ft_stack_rmv_elm(t_list **stack, int elm_val)
+void	ft_stack_rmv_elm(t_list **stack, int elm_val)
 {
 	int		i;
 	int		position;
@@ -66,31 +66,11 @@ void ft_stack_rmv_elm(t_list **stack, int elm_val)
 	t_list	*prev;
 
 	i = 0;
-	position = ft_stack_elm_pos(*stack, elm_val) + 1;
 	tmp = *stack;
-	prev = *stack;
+	position = ft_stack_elm_pos(*stack, elm_val) + 1;
 	while (i < position)
 	{
-		if (i == 0 && position == 1)
-		{
-			*stack = (*stack)->next;
-			ft_lstdelone(tmp);
-		}
-		else
-		{
-			if (i == position - 1 && tmp)
-			{
-				prev->next = tmp->next;
-				ft_lstdelone(tmp);
-			}
-			else
-			{
-				prev = tmp;
-				if (prev == NULL)
-					break ;
-				tmp = tmp->next;
-			}
-		}
-		i++;
+		if (tmp->next != NULL)
+			tmp = tmp->next;
 	}
 }
