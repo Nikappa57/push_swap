@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_stack_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaudino <lgaudino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lorenzogaudino <lorenzogaudino@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:47:07 by lorenzogaud       #+#    #+#             */
-/*   Updated: 2023/05/23 13:53:42 by lgaudino         ###   ########.fr       */
+/*   Updated: 2023/05/23 19:36:47 by lorenzogaud      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,17 +60,23 @@ int	*ft_copy_stack(t_list *stack, int len)
 
 void	ft_stack_rmv_elm(t_list **stack, int elm_val)
 {
-	int		i;
-	int		position;
 	t_list	*tmp;
 	t_list	*prev;
 
-	i = 0;
 	tmp = *stack;
-	position = ft_stack_elm_pos(*stack, elm_val) + 1;
-	while (i < position)
+	if (tmp != NULL && tmp->content == elm_val)
 	{
-		if (tmp->next != NULL)
-			tmp = tmp->next;
+		*stack = tmp->next;
+		ft_lstdelone(tmp);
+		return ;
 	}
+	while (tmp != NULL && tmp->content != elm_val)
+	{
+		prev = tmp;
+		tmp = tmp->next;
+	}
+	if (tmp == NULL)
+		return ;
+	prev->next = tmp->next;
+	ft_lstdelone(tmp);
 }
