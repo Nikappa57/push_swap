@@ -56,7 +56,6 @@ dkms.conf
 imgui.ini
 push_swap_tester/
 push_swap_visualizer/
-*.py
 visualizer
 *.txt
 *.log
